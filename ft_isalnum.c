@@ -9,20 +9,12 @@
 /*   Updated: 2024/10/26 16:54:08 by bacaro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isalnum(char *x)
-{
-	int	counter;
+#include "libft.h"
 
-	counter = 0;
-	while (x[counter] != '\0')
-	{
-		if (!((x[counter] >= 'a' && x[counter] <= 'z')
-				|| (x[counter] >= 'A' && x[counter] <= 'Z')
-				|| ((x[counter] >= '0' && x[counter] <= '9'))))
-		{
-			return (1);
-		}
-		counter++;
-	}
+int	ft_isalnum(int c)
+{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')
+		|| (c >= '0' && c <= '9'))
+		return (1);
 	return (0);
 }

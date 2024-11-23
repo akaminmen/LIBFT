@@ -1,33 +1,37 @@
-#include <stdio.h>
-char *ft_strnstr(char *x, char *y, int len)
-{
-    int i;
-    i = 0;
-    int j;
-    while(x[i] != '\0' &&  i <= len)
-    {
-        j = 0;
-        if (x[i] == y[j])
-        {
-            
-            while (x[i + j] != '\0' &&  x[i + j] == y[j] && i + j <= len)
-            {
-                if(y[j + 1]  == '\0'){
-                    return(x + i);
-                }
-                j++;
-            }
-            
-            return (x + i);
-        }
-        i++;
-    }
-    return 0;
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bacaro-m <bacaro-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 14:46:33 by bacaro-m          #+#    #+#             */
+/*   Updated: 2024/11/23 14:46:55 by bacaro-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "libft.h"
 
-int  main()
+char	*ft_strnstr(char *x, char *y, int len)
 {
-    char *str = "Hello, World!";
-    char *substr = "World";
-    printf("%d\n", ft_strnstr(str, substr, 2));
+	int	i;
+	int	j;
+
+	i = 0;
+	while (x[i] != '\0' && i <= len)
+	{
+		j = 0;
+		if (x[i] == y[j])
+		{
+			while (x[i + j] != '\0' && x[i + j] == y[j] && i + j <= len)
+			{
+				if (y[j + 1] == '\0')
+				{
+					return (x + i);
+				}
+				j++;
+			}
+		}
+		i++;
+	}
+	return (0);
 }

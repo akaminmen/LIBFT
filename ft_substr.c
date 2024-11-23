@@ -1,23 +1,29 @@
-#include <stdio.h>
-char *ft_substr(char const *s, unsigned int start,size_t len)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bacaro-m <bacaro-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/23 16:04:16 by bacaro-m          #+#    #+#             */
+/*   Updated: 2024/11/23 17:13:02 by bacaro-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int i;
-	i = 0;
+	char	*new_str;
+	size_t	i;
+	size_t	j;
 
-	start = malloc (len + 1);
-	while (i < len)
-	{
-		s[i] = start[i];
-		i++;
-	}
-
-	start[i] = '\0';
-	return (start);
-}
-
-int main ()
-{
-	char prueba[] = "texto a copiar";
-	char copia[] = ft_substr(prueba, copia, 5);
-	printf("%s",copia);
+	if (!s || !(new_str = (char *) malloc(len + 1)))
+		return (0);
+	i = start;
+	j = 0;
+	while (i < ft_strlen(s) && j < len)
+		new_str[j++] = s[i++];
+	new_str[j] = '\0';
+	return (new_str);
 }

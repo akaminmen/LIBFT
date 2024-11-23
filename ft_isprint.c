@@ -9,18 +9,11 @@
 /*   Updated: 2024/10/26 16:14:42 by bacaro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isprint(char *x)
-{
-	int	counter;
+#include "libft.h"
 
-	counter = 0;
-	while (x[counter] != '\0')
-	{
-		if (!(x[counter] >= 32 && x[counter] <= 126))
-		{
-			return (1);
-		}
-		counter++;
-	}
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
 	return (0);
 }

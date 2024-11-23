@@ -5,20 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bacaro-m <bacaro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 14:56:50 by bacaro-m          #+#    #+#             */
-/*   Updated: 2024/11/16 14:59:15 by bacaro-m         ###   ########.fr       */
+/*   Created: 2024/11/23 13:25:32 by bacaro-m          #+#    #+#             */
+/*   Updated: 2024/11/23 13:25:38 by bacaro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+#include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*a;
+	size_t	i;
 
-	*a = s;
-	while (n--)
+	i = 0;
+	while (i < len)
 	{
-		*a++ = (char)c;
+		((unsigned char *)b)[i] = c;
+		i++;
 	}
-	return (s);
+	return (b);
 }

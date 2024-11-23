@@ -9,19 +9,11 @@
 /*   Updated: 2024/10/26 16:11:19 by bacaro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isalpha(char *x)
-{
-	int	counter;
+#include "libft.h"
 
-	counter = 0;
-	while (x[counter] != '\0')
-	{
-		if (!((x[counter] >= 'a' && x[counter] <= 'z')
-				|| (x[counter] >= 'A' && x[counter] <= 'Z')))
-		{
-			return (1);
-		}
-		counter++;
-	}
+int	ft_isalpha(int c)
+{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
 	return (0);
 }

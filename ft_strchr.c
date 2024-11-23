@@ -6,21 +6,21 @@
 /*   By: bacaro-m <bacaro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 16:28:49 by bacaro-m          #+#    #+#             */
-/*   Updated: 2024/10/26 16:31:24 by bacaro-m         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:23:26 by bacaro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	*ft_strchr(char *x, char y)
-{
-	int	i;
 
-	i = 0;
-	while (x[i] != '\0')
+#include "libft.h"
+
+char	*ft_strchr(const char	*s, int	c)
+{
+	while (*s)
 	{
-		if (x[i] == y)
-		{
-			return (x + i);
-		}
-		i++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	return (x + i);
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (0);
 }

@@ -5,50 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bacaro-m <bacaro-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 16:32:31 by bacaro-m          #+#    #+#             */
-/*   Updated: 2024/11/16 16:38:26 by bacaro-m         ###   ########.fr       */
+/*   Created: 2024/11/23 17:25:53 by bacaro-m          #+#    #+#             */
+/*   Updated: 2024/11/23 17:26:35 by bacaro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
 
-static size_t	get_num_len(int n)
+#include "libft.h"
+
+static size_t	get_digits(int n)
 {
-	size_t	len;
-
-	len = 1;
-	if (n < 0)
-		len++;
-	while (n / 10)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-char	*ft_itoa(int n)
-{
-	size_t	len;
-	char	*str;
 	size_t	i;
 
-	len = get_num_len(n);
-	*str = malloc(len + 1);
-	if (!str)
-		return (NULL);
-	str[len] = '\0';
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
+}
+
+char			*ft_itoa(int n)
+{
+	char		*str_num;
+	size_t		digits;
+	long int	num;
+
+	num = n;
+	digits = get_digits(n);
 	if (n < 0)
 	{
-		str[0] = '-';
-		n = -n;
+		num *= -1;
+		digits++;
 	}
-	i = len - 1;
-	if (n == 0)
-		str[i] = '0';
-	while (n)
+	if (!(str_num = (char *)malloc(sizeof(char) * (digits + 1))))
+		return (NULL);
+	*(str_num + digits) = 0;
+	while (digits--)
 	{
-		str[i--] = (n % 10) + '0';
-		n /= 10;
+		*(str_num + digits) = num % 10 + '0';
+		num = num / 10;
 	}
-	return (str);
+	if (n < 0)
+		*(str_num + 0) = '-';
+	return (str_num);
 }

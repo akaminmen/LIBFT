@@ -9,18 +9,19 @@
 /*   Updated: 2024/11/16 14:49:51 by bacaro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	const char	*s;
-	char		*d;
+	size_t	i;
 
-	*d = dest;
-	*s = src;
-	while (n--)
+	if (!dst && !src)
+		return (0);
+	i = 0;
+	while (i < n)
 	{
-		*d++ = *s++;
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
 	}
-	return (dest);
+	return (dst);
 }

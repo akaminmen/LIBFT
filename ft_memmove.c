@@ -2,37 +2,41 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bacaro-m <bacaro-m@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: bacaro-m <bacaro-m@student.42.fr>          +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2024/11/16 14:50:52 by bacaro-m          #+#    #+#             */
 /*   Updated: 2024/11/16 14:55:36 by bacaro-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
+#include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	const char	*s;
-	char		*d;
+	size_t	i;
 
-	*d = dest;
-	*s = src;
-	if (d < s)
+	if (!dst && !src)
+		return (0);
+	i = 0;
+	if ((size_t)dst - (size_t)src < len)
 	{
-		while (n--)
+		i = len - 1;
+		while (i < len)
 		{
-			*d++ = *s++;
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i--;
 		}
 	}
 	else
 	{
-		d += n;
-		s += n;
-		while (n--)
+		while (i < len)
 		{
-			*--d = *--s;
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i++;
 		}
 	}
-	return (dest);
+	return (dst);
 }
